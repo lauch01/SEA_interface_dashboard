@@ -1,0 +1,123 @@
+:root {
+    --bg-color: #050a15; /* Azul muy oscuro casi negro */
+    --panel-bg: #0b1426;
+    --text-main: #e0e0e0;
+    --text-accent: #00f0ff; /* Cyan estilo sci-fi */
+    --alert-color: #ff3366; /* Rojo/Rosa para alertas */
+    --border-color: #1a2c4e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Share Tech Mono', monospace;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 250px 1fr 250px; /* Paneles laterales fijos, centro dinámico */
+    gap: 20px;
+    width: 98vw;
+    height: 95vh;
+}
+
+.panel {
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.05);
+}
+
+.panel-title {
+    color: var(--text-accent);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.sensor-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 0.8rem;
+    color: #8892b0;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.value {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+.value.compass {
+    color: #ffd700; /* Dorado para destacar la navegación */
+}
+
+.alert-text {
+    color: var(--alert-color);
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: var(--border-color);
+    margin: 20px 0;
+}
+
+/* Estilos de la Cámara */
+.center-panel {
+    padding: 10px;
+    justify-content: center;
+}
+
+.camera-container {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.camera-overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: rgba(0, 240, 255, 0.5);
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+.camera-container img, 
+.camera-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta el video sin deformarlo */
+}

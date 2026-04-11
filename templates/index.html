@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Control - Rover</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        
+        <aside class="panel left-panel">
+            <h2 class="panel-title">TELEMETRÍA AMBIENTAL</h2>
+            <div class="sensor-group">
+                <span class="label">TEMP INTERNA</span>
+                <span class="value" id="temp-int">--.- °C</span>
+            </div>
+            <div class="sensor-group">
+                <span class="label">TEMP EXTERNA</span>
+                <span class="value" id="temp-ext">--.- °C</span>
+            </div>
+            <div class="sensor-group">
+                <span class="label">PRESIÓN</span>
+                <span class="value" id="presion">----.- hPa</span>
+            </div>
+            <div class="sensor-group">
+                <span class="label">ILUMINACIÓN (LTR)</span>
+                <span class="value" id="luz">--- Lux</span>
+            </div>
+        </aside>
+
+        <main class="panel center-panel">
+            <div class="camera-container">
+                <div class="camera-overlay">FEED DE VIDEO ACTIVO</div>
+                </div>
+        </main>
+
+        <aside class="panel right-panel">
+            <h2 class="panel-title">NAVEGACIÓN Y ENERGÍA</h2>
+            <div class="sensor-group">
+                <span class="label">BRÚJULA (HEADING)</span>
+                <span class="value compass" id="brujula">---° N</span>
+            </div>
+            <div class="sensor-group">
+                <span class="label">GPS LATITUD</span>
+                <span class="value" id="gps-lat">--.------</span>
+            </div>
+            <div class="sensor-group">
+                <span class="label">GPS LONGITUD</span>
+                <span class="value" id="gps-lon">--.------</span>
+            </div>
+            <hr class="divider">
+            <div class="sensor-group">
+                <span class="label">BATERÍA VOLTAJE</span>
+                <span class="value alert-text" id="bat-volt">--.- V</span>
+            </div>
+            <div class="sensor-group">
+                <span class="label">CONSUMO ACTUAL</span>
+                <span class="value" id="bat-curr">-.- A</span>
+            </div>
+        </aside>
+
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
