@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rover Telemetry Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="panel left-panel">
+            <h2>POWER MANAGEMENT</h2>
+            <div class="sensor-group">
+                <div class="battery-circle">
+                    <span id="battery-voltage">28.1V</span>
+                </div>
+                <div class="sensor-bars">
+                    <label>BATTERY CURRENT</label>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 75%;"></div></div>
+                    <span class="value" id="battery-current">14.5 A</span>
+                    
+                    <label>BATTERY INT TEMP</label>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 40%;"></div></div>
+                    <span class="value" id="battery-temp">24.3 °C</span>
+                </div>
+            </div>
+
+            <h2 class="mt-2">ENVIRONMENTAL SENSORS</h2>
+            <div class="sensor-group block">
+                <label>LUMINOSITY (LTR-390)</label>
+                <span class="value right" id="luminosity">12500 LUX</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
+
+                <label>TEMPERATURE (EXT)</label>
+                <span class="value right" id="ext-temp">-1.8 °C</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 20%;"></div></div>
+
+                <label>PRESSURE</label>
+                <span class="value right" id="pressure">6.2 hPa</span>
+                <div class="bar-bg"><div class="bar-fill" style="width: 30%;"></div></div>
+            </div>
+        </div>
+
+        <div class="panel center-panel">
+            <div class="camera-feed">
+                <h2>MAIN CAMERA FEED</h2>
+                <img src="camera-feed.jpg" alt="Main Camera Stream" class="feed-img">
+                <div class="camera-overlay">
+                    <span class="overlay-text top-left">ZOOM: 1.0x</span>
+                    <span class="overlay-text top-right">REC 00:10:33</span>
+                    <div class="crosshair">+</div>
+                </div>
+            </div>
+
+            <div class="steering-panel">
+                <h2>ROVER MOTION / STEERING</h2>
+                <div class="steering-grid">
+                    <div class="joystick-area">
+                        <label>MANUAL CONTROL</label>
+                        <div class="joystick-placeholder">
+                            <div class="stick"></div>
+                        </div>
+                    </div>
+                    <div class="wheel-status">
+                        <label>4-WHEEL DRIVE STATUS</label>
+                        <div class="wheels">
+                            <div class="wheel">M1: 52 RPM<br>S1: +2.1°</div>
+                            <div class="wheel">M2: 52 RPM<br>S1: +2.1°</div>
+                            <div class="wheel">M3: 52 RPM<br>S2: -0.5°</div>
+                            <div class="wheel">M4: 52 RPM<br>S2: -0.5°</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel right-panel">
+            <h2>GPS NAVIGATION / MAPS</h2>
+            <div class="map-container">
+                <img src="map-view.png" alt="Topographic Map" class="map-img">
+                <div class="map-coordinates">
+                    LAT: 18.441<br>LON: -145.922
+                </div>
+            </div>
+
+            <h2 class="mt-2">XYZ AXIS POSITION</h2>
+            <div class="xyz-container">
+                <div class="data-text">
+                    X: <span id="axis-x">0.1G</span><br>
+                    Y: <span id="axis-y">-0.2G</span><br>
+                    Z: <span id="axis-z">0.98G</span>
+                </div>
+                <div class="xyz-graph-placeholder">
+                    [ 3D Orientation Graphic ]
+                </div>
+            </div>
+        </div>
+
+        <div class="panel bottom-panel">
+            <h2>COMMANDS & TELEMETRY</h2>
+            <div class="button-grid">
+                <button class="btn primary" onclick="startExploration()">START EXPLORATION</button>
+                <button class="btn" onclick="takePhoto()">TAKE PHOTOGRAPH</button>
+                <button class="btn" onclick="takeData()">TAKE DATA</button>
+                <button class="btn warning" onclick="activateSoil()">SOIL SENSOR ACTIVATION</button>
+                <button class="btn warning" onclick="deployExcavation()">EXCAVATION PAYLOAD</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
