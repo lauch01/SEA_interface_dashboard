@@ -26,30 +26,48 @@
             </div>
 
             <h2 class="mt-2">ENVIRONMENTAL SENSORS</h2>
+
             <div class="sensor-group block">
-                <label>LUMINOSITY (LTR-390)</label>
-                <span class="value right" id="luminosity">12500 LUX</span>
-                <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
 
-                <label>TEMPERATURE (EXT)</label>
-                <span class="value right" id="ext-temp">-1.8 °C</span>
-                <div class="bar-bg"><div class="bar-fill" style="width: 20%;"></div></div>
+                <label>UV / LUMINOSITY (LTR-390)</label>
+                <span class="value right" id="uv">--</span>
+                <div class="bar-bg"><div class="bar-fill" id="uv-bar"></div></div>
 
-                <label>PRESSURE</label>
-                <span class="value right" id="pressure">6.2 hPa</span>
-                <div class="bar-bg"><div class="bar-fill" style="width: 30%;"></div></div>
+                <label>TEMPERATURE EXT (BME280)</label>
+                <span class="value right" id="bme-temp">--</span>
+                <div class="bar-bg"><div class="bar-fill" id="bme-temp-bar"></div></div>
 
-                <label>LUMINOSITY (LTR-390)</label>
-                <span class="value right" id="luminosity">12500 LUX</span>
-                <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
+                <label>PRESSURE (BME280)</label>
+                <span class="value right" id="bme-pres">--</span>
+                <div class="bar-bg"><div class="bar-fill" id="bme-pres-bar"></div></div>
 
-                <label>TEMPERATURE (EXT)</label>
-                <span class="value right" id="ext-temp">-1.8 °C</span>
-                <div class="bar-bg"><div class="bar-fill" style="width: 20%;"></div></div>
+                <label>HUMIDITY EXT (BME280)</label>
+                <span class="value right" id="bme-hum">--</span>
+                <div class="bar-bg"><div class="bar-fill" id="bme-hum-bar"></div></div>
 
-                <label>PRESSURE</label>
-                <span class="value right" id="pressure">6.2 hPa</span>
-                <div class="bar-bg"><div class="bar-fill" style="width: 30%;"></div></div>
+                <label>TEMPERATURE INT (DHT11)</label>
+                <span class="value right" id="dht-temp">--</span>
+                <div class="bar-bg"><div class="bar-fill" id="dht-temp-bar"></div></div>
+
+                <label>HUMIDITY INT (DHT11)</label>
+                <span class="value right" id="dht-hum">--</span>
+                <div class="bar-bg"><div class="bar-fill" id="dht-hum-bar"></div></div>
+
+                <label>GPS LATITUDE</label>
+                <span class="value right" id="gps-lat">--</span>
+
+                <label>GPS LONGITUDE</label>
+                <span class="value right" id="gps-lon">--</span>
+
+                <label>GPS ALTITUDE</label>
+                <span class="value right" id="gps-alt">--</span>
+
+                <label>GPS SATELLITES</label>
+                <span class="value right" id="gps-sats">--</span>
+
+                <label>GPS UTC TIME</label>
+                <span class="value right" id="gps-time">--</span>
+
             </div>
         </div>
 
@@ -119,6 +137,6 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
 </body>
 </html>
