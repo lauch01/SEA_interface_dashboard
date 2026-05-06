@@ -24,6 +24,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .dashboard-container {
@@ -33,7 +34,8 @@ body {
     gap: 15px;
     width: 100%;
     max-width: 1400px;
-    height: 95vh;
+    height: calc(100vh - 20px);
+    overflow: hidden;
 }
 
 .panel {
@@ -43,7 +45,23 @@ body {
     padding: 15px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
 }
+
+.left-panel,
+.right-panel {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+}
+
+.left-panel::-webkit-scrollbar,
+.right-panel::-webkit-scrollbar { width: 3px; }
+.left-panel::-webkit-scrollbar-track,
+.right-panel::-webkit-scrollbar-track { background: transparent; }
+.left-panel::-webkit-scrollbar-thumb,
+.right-panel::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
 
 h2 {
     font-size: 14px;
@@ -52,12 +70,13 @@ h2 {
     padding-bottom: 5px;
     margin-bottom: 15px;
     letter-spacing: 1px;
+    flex-shrink: 0;
 }
 
 .mt-2 { margin-top: 20px; }
 
 /* Left Panel - Sensors */
-.sensor-group { display: flex; gap: 15px; align-items: center; }
+.sensor-group { display: flex; gap: 15px; align-items: center; flex-shrink: 0; }
 .sensor-group.block { flex-direction: column; align-items: stretch; gap: 10px; }
 
 .battery-circle {
@@ -66,6 +85,7 @@ h2 {
     border-radius: 50%;
     display: flex; justify-content: center; align-items: center;
     font-size: 18px; color: var(--accent-cyan); font-weight: bold;
+    flex-shrink: 0;
 }
 
 .sensor-bars { flex: 1; }
@@ -85,7 +105,16 @@ h2 {
 
 /* Center Panel - Camera & Steering */
 .center-panel { grid-column: 2 / 3; grid-row: 1 / 2; }
-.camera-feed { flex: 1; position: relative; border: 1px solid var(--border-color); margin-bottom: 15px; background: #000; overflow: hidden;}
+
+.camera-feed {
+    flex: 1;
+    position: relative;
+    border: 1px solid var(--border-color);
+    margin-bottom: 15px;
+    background: #000;
+    overflow: hidden;
+    min-height: 0;
+}
 .feed-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
 
 .camera-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
@@ -94,22 +123,22 @@ h2 {
 .top-right { top: 0; right: 0; }
 .crosshair { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.5); font-size: 24px; }
 
-.steering-panel { height: 150px; }
-.steering-grid { display: flex; gap: 20px; }
-.joystick-area, .wheel-status { flex: 1; border: 1px solid var(--border-color); padding: 10px; text-align: center; }
+.steering-panel { flex-shrink: 0; height: 150px; }
+.steering-grid { display: flex; gap: 20px; height: 100%; }
+.joystick-area, .wheel-status { flex: 1; border: 1px solid var(--border-color); padding: 10px; text-align: center; overflow: hidden; }
 .wheels { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
 .wheel { font-size: 12px; border: 1px dashed var(--border-color); padding: 5px; }
 
 /* Right Panel - GPS & XYZ */
 .right-panel { grid-column: 3 / 4; grid-row: 1 / 2; }
-.map-container { height: 200px; border: 1px solid var(--border-color); position: relative; background: #222; }
+.map-container { height: 200px; border: 1px solid var(--border-color); position: relative; background: #222; flex-shrink: 0; }
 .map-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
 .map-coordinates { position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); padding: 5px; font-size: 12px; }
-.xyz-container { flex: 1; display: flex; flex-direction: column; gap: 10px;}
-.xyz-graph-placeholder { flex: 1; border: 1px dashed var(--border-color); display: flex; justify-content: center; align-items: center; color: #555; }
+.xyz-container { flex: 1; display: flex; flex-direction: column; gap: 10px; min-height: 0; }
+.xyz-graph-placeholder { flex: 1; border: 1px dashed var(--border-color); display: flex; justify-content: center; align-items: center; color: #555; min-height: 0; }
 
 /* Bottom Panel - Commands */
-.bottom-panel { grid-column: 1 / 4; grid-row: 2 / 3; }
+.bottom-panel { grid-column: 1 / 4; grid-row: 2 / 3; flex-shrink: 0; }
 .button-grid { display: flex; justify-content: space-between; gap: 15px; }
 .btn {
     flex: 1; padding: 12px;
