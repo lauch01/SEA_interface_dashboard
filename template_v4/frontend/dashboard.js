@@ -44,32 +44,19 @@ function updateBar(bar, value, min, max) {
 }
 
 function actualizarDashboard(datos) {
-    // LTR-390
-    ui.uv.innerText = datos.uv !== null ? `${datos.uv} UV index` : "N/A";
-    updateBar(ui.uvBar, datos.uv, 0, 100);
+    ui.uv.innerText = datos.uv ?? "N/A";
 
-    // BME280
-    ui.bmeTemp.innerText = safeValue(datos.bme_temp, 1, "°C");
-    updateBar(ui.bmeTempBar, datos.bme_temp, -10, 50);
+    ui.bmeTemp.innerText = datos.bme_temp != null ? datos.bme_temp.toFixed(1) : "N/A";
+    ui.bmePres.innerText = datos.bme_pres != null ? datos.bme_pres.toFixed(1) : "N/A";
+    ui.bmeHum.innerText = datos.bme_hum != null ? datos.bme_hum.toFixed(1) : "N/A";
 
-    ui.bmePres.innerText = safeValue(datos.bme_pres, 1, "hPa");
-    updateBar(ui.bmePresBar, datos.bme_pres, 600, 800);
+    ui.dhtTemp.innerText = datos.dht_temp != null ? datos.dht_temp.toFixed(1) : "N/A";
+    ui.dhtHum.innerText = datos.dht_hum != null ? datos.dht_hum.toFixed(1) : "N/A";
 
-    ui.bmeHum.innerText = safeValue(datos.bme_hum, 1, "%");
-    updateBar(ui.bmeHumBar, datos.bme_hum, 0, 100);
-
-    // DHT11
-    ui.dhtTemp.innerText = safeValue(datos.dht_temp, 1, "°C");
-    updateBar(ui.dhtTempBar, datos.dht_temp, -10, 50);
-
-    ui.dhtHum.innerText = safeValue(datos.dht_hum, 1, "%");
-    updateBar(ui.dhtHumBar, datos.dht_hum, 0, 100);
-
-    // GPS
-    ui.gpsLat.innerText = datos.gps_lat !== null ? datos.gps_lat.toFixed(6) : "N/A";
-    ui.gpsLon.innerText = datos.gps_lon !== null ? datos.gps_lon.toFixed(6) : "N/A";
-    ui.gpsAlt.innerText = safeValue(datos.gps_alt, 1, "m");
-    ui.gpsSats.innerText = datos.gps_sats !== null ? `${datos.gps_sats}` : "N/A";
+    ui.gpsLat.innerText = datos.gps_lat != null ? datos.gps_lat.toFixed(6) : "N/A";
+    ui.gpsLon.innerText = datos.gps_lon != null ? datos.gps_lon.toFixed(6) : "N/A";
+    ui.gpsAlt.innerText = datos.gps_alt != null ? datos.gps_alt.toFixed(1) : "N/A";
+    ui.gpsSats.innerText = datos.gps_sats ?? "N/A";
     ui.gpsTime.innerText = datos.gps_time ?? "N/A";
 }
 

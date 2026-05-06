@@ -27,46 +27,69 @@
 
             <h2 class="mt-2">ENVIRONMENTAL SENSORS</h2>
 
-            <div class="sensor-group block">
+            <div class="telemetry-grid">
 
-                <label>UV / LUMINOSITY (LTR-390)</label>
-                <span class="value right" id="uv">--</span>
-                <div class="bar-bg"><div class="bar-fill" id="uv-bar"></div></div>
+            <div class="sensor-card priority">
+                <span class="sensor-label">UV / LTR-390</span>
+                <span class="sensor-value" id="uv">--</span>
+                <span class="sensor-unit">UV Index</span>
+            </div>
 
-                <label>TEMPERATURE EXT (BME280)</label>
-                <span class="value right" id="bme-temp">--</span>
-                <div class="bar-bg"><div class="bar-fill" id="bme-temp-bar"></div></div>
+            <div class="sensor-card">
+                <span class="sensor-label">EXT TEMP / BME280</span>
+                <span class="sensor-value" id="bme-temp">--</span>
+                <span class="sensor-unit">°C</span>
+            </div>
 
-                <label>PRESSURE (BME280)</label>
-                <span class="value right" id="bme-pres">--</span>
-                <div class="bar-bg"><div class="bar-fill" id="bme-pres-bar"></div></div>
+            <div class="sensor-card">
+                <span class="sensor-label">PRESSURE</span>
+                <span class="sensor-value" id="bme-pres">--</span>
+                <span class="sensor-unit">hPa</span>
+            </div>
 
-                <label>HUMIDITY EXT (BME280)</label>
-                <span class="value right" id="bme-hum">--</span>
-                <div class="bar-bg"><div class="bar-fill" id="bme-hum-bar"></div></div>
+            <div class="sensor-card">
+                <span class="sensor-label">EXT HUMIDITY</span>
+                <span class="sensor-value" id="bme-hum">--</span>
+                <span class="sensor-unit">%</span>
+            </div>
 
-                <label>TEMPERATURE INT (DHT11)</label>
-                <span class="value right" id="dht-temp">--</span>
-                <div class="bar-bg"><div class="bar-fill" id="dht-temp-bar"></div></div>
+            <div class="sensor-card">
+                <span class="sensor-label">INT TEMP / DHT11</span>
+                <span class="sensor-value" id="dht-temp">--</span>
+                <span class="sensor-unit">°C</span>
+            </div>
 
-                <label>HUMIDITY INT (DHT11)</label>
-                <span class="value right" id="dht-hum">--</span>
-                <div class="bar-bg"><div class="bar-fill" id="dht-hum-bar"></div></div>
+            <div class="sensor-card">
+                <span class="sensor-label">INT HUMIDITY</span>
+                <span class="sensor-value" id="dht-hum">--</span>
+                <span class="sensor-unit">%</span>
+            </div>
 
-                <label>GPS LATITUDE</label>
-                <span class="value right" id="gps-lat">--</span>
+            <div class="sensor-card gps">
+                <span class="sensor-label">GPS LAT</span>
+                <span class="sensor-value small" id="gps-lat">--</span>
+            </div>
 
-                <label>GPS LONGITUDE</label>
-                <span class="value right" id="gps-lon">--</span>
+            <div class="sensor-card gps">
+                <span class="sensor-label">GPS LON</span>
+                <span class="sensor-value small" id="gps-lon">--</span>
+            </div>
 
-                <label>GPS ALTITUDE</label>
-                <span class="value right" id="gps-alt">--</span>
+            <div class="sensor-card gps">
+                <span class="sensor-label">ALTITUDE</span>
+                <span class="sensor-value" id="gps-alt">--</span>
+                <span class="sensor-unit">m</span>
+            </div>
 
-                <label>GPS SATELLITES</label>
-                <span class="value right" id="gps-sats">--</span>
+            <div class="sensor-card gps">
+                <span class="sensor-label">SATELLITES</span>
+                <span class="sensor-value" id="gps-sats">--</span>
+            </div>
 
-                <label>GPS UTC TIME</label>
-                <span class="value right" id="gps-time">--</span>
+            <div class="sensor-card gps">
+                <span class="sensor-label">UTC TIME</span>
+                <span class="sensor-value small" id="gps-time">--</span>
+            </div>
 
             </div>
         </div>

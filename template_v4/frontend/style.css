@@ -154,3 +154,54 @@ h2 {
 .btn.primary:hover { background-color: var(--accent-cyan); color: #000; }
 .btn.warning { border-color: #ff9900; color: #ff9900; }
 .btn.warning:hover { background-color: #ff9900; color: #000; }
+
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.sensor-card {
+  background: rgba(10, 18, 30, 0.9);
+  border: 1px solid rgba(0, 255, 180, 0.25);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: 0 0 12px rgba(0, 255, 180, 0.08);
+}
+
+.sensor-card.priority {
+  border-color: rgba(255, 200, 0, 0.7);
+  box-shadow: 0 0 14px rgba(255, 200, 0, 0.2);
+}
+
+.sensor-card.gps {
+  border-color: rgba(0, 170, 255, 0.35);
+}
+
+.sensor-label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  opacity: 0.7;
+  margin-bottom: 6px;
+}
+
+.sensor-value {
+  display: block;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #00ffc8;
+}
+
+.sensor-value.small {
+  font-size: 1rem;
+}
+
+.sensor-unit {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-top: 3px;
+}
