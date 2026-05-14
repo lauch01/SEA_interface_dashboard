@@ -8,92 +8,157 @@
 </head>
 <body>
     <div class="dashboard-container">
+
+        <!-- ── COLUMNA 1: MENÚ DE COMANDOS ── -->
+        <div class="panel menu-panel">
+            <h2>COMMANDS</h2>
+
+            <button class="menu-btn primary" onclick="window.location.href='exploration.html'">
+                ▶ START<br>EXPLORATION
+            </button>
+
+            <div class="menu-divider"></div>
+
+            <button class="menu-btn" onclick="takePhoto()">
+                ◎ TAKE<br>PHOTOGRAPH
+            </button>
+            <button class="menu-btn" onclick="takeData()">
+                ⊞ TAKE<br>DATA
+            </button>
+
+            <div class="menu-divider"></div>
+
+            <button class="menu-btn warning" onclick="activateSoil()">
+                ⬡ SOIL SENSOR<br>ACTIVATION
+            </button>
+            <button class="menu-btn warning" onclick="deployExcavation()">
+                ⛏ EXCAVATION<br>PAYLOAD
+            </button>
+
+            <div class="menu-spacer"></div>
+
+            <div class="menu-status">
+                <span class="online">● ONLINE</span>
+                <span>SYS OK</span>
+                <span>SOL 047</span>
+            </div>
+        </div>
+
+        <!-- ── COLUMNA 2: SENSORES ── -->
         <div class="panel left-panel">
             <h2>POWER MANAGEMENT</h2>
+
             <div class="sensor-group">
-                <div class="battery-circle">
-                    <span id="battery-voltage">28.1V</span>
+                <!-- VOLTAGE GAUGE -->
+                <div class="gauge-wrap">
+                    <svg width="110" height="72" viewBox="0 0 110 72">
+                        <path d="M 10 66 A 45 45 0 0 1 100 66"
+                            fill="none" stroke="#1a2530" stroke-width="8" stroke-linecap="round"/>
+                        <path d="M 10 66 A 45 45 0 0 1 100 66"
+                            fill="none" stroke="url(#vGrad)" stroke-width="8"
+                            stroke-linecap="round" stroke-dasharray="141.4" stroke-dashoffset="31.2"/>
+                        <defs>
+                            <linearGradient id="vGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%"   stop-color="#e24b4a"/>
+                                <stop offset="30%"  stop-color="#ff9900"/>
+                                <stop offset="60%"  stop-color="#39ff14"/>
+                                <stop offset="100%" stop-color="#39ff14"/>
+                            </linearGradient>
+                        </defs>
+                        <line x1="55" y1="66" x2="19" y2="44"
+                            stroke="#b0c4de" stroke-width="1.5" stroke-linecap="round"/>
+                        <circle cx="55" cy="66" r="3" fill="#b0c4de"/>
+                        <text x="6"  y="64" fill="#3a5060" font-size="8" font-family="'Share Tech Mono',monospace">0</text>
+                        <text x="49" y="16" fill="#3a5060" font-size="8" font-family="'Share Tech Mono',monospace">18</text>
+                        <text x="96" y="64" fill="#3a5060" font-size="8" font-family="'Share Tech Mono',monospace" text-anchor="end">36</text>
+                    </svg>
+                    <div class="gauge-reading" id="battery-voltage">28.1 V</div>
+                    <div class="gauge-sublabel">VOLTAGE · 24–32V</div>
                 </div>
-                <div class="sensor-bars">
-                    <label>BATTERY CURRENT</label>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 75%;"></div></div>
-                    <span class="value" id="battery-current">14.5 A</span>
-                    
-                    <label>BATTERY INT TEMP</label>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 40%;"></div></div>
-                    <span class="value" id="battery-temp">24.3 °C</span>
+
+                <!-- CURRENT + TEMP BARS -->
+                <div class="power-bars">
+                    <div class="power-bar-item">
+                        <div class="power-bar-header">
+                            <span class="power-bar-label">CURRENT</span>
+                            <span class="power-bar-value" id="battery-current">14.5A</span>
+                        </div>
+                        <div class="power-bar-track">
+                            <div class="power-bar-fill" style="width:72.5%; background:var(--accent-green);"></div>
+                        </div>
+                        <div class="power-bar-range"><span>0 A</span><span>20 A</span></div>
+                    </div>
+                    <div class="power-bar-item">
+                        <div class="power-bar-header">
+                            <span class="power-bar-label">INT TEMP</span>
+                            <span class="power-bar-value" id="battery-temp">24.3°C</span>
+                        </div>
+                        <div class="power-bar-track">
+                            <div class="power-bar-fill" style="width:40.5%; background:#ff9900;"></div>
+                        </div>
+                        <div class="power-bar-range"><span>0 °C</span><span>60 °C</span></div>
+                    </div>
                 </div>
             </div>
 
             <h2 class="mt-2">ENVIRONMENTAL SENSORS</h2>
-
             <div class="telemetry-grid">
-
-            <div class="sensor-card priority">
-                <span class="sensor-label">UV / LTR-390</span>
-                <span class="sensor-value" id="uv">--</span>
-                <span class="sensor-unit">UV Index</span>
-            </div>
-
-            <div class="sensor-card">
-                <span class="sensor-label">EXT TEMP / BME280</span>
-                <span class="sensor-value" id="bme-temp">--</span>
-                <span class="sensor-unit">°C</span>
-            </div>
-
-            <div class="sensor-card">
-                <span class="sensor-label">PRESSURE</span>
-                <span class="sensor-value" id="bme-pres">--</span>
-                <span class="sensor-unit">hPa</span>
-            </div>
-
-            <div class="sensor-card">
-                <span class="sensor-label">EXT HUMIDITY</span>
-                <span class="sensor-value" id="bme-hum">--</span>
-                <span class="sensor-unit">%</span>
-            </div>
-
-            <div class="sensor-card">
-                <span class="sensor-label">INT TEMP / DHT11</span>
-                <span class="sensor-value" id="dht-temp">--</span>
-                <span class="sensor-unit">°C</span>
-            </div>
-
-            <div class="sensor-card">
-                <span class="sensor-label">INT HUMIDITY</span>
-                <span class="sensor-value" id="dht-hum">--</span>
-                <span class="sensor-unit">%</span>
-            </div>
-
-            <div class="sensor-card gps">
-                <span class="sensor-label">GPS LAT</span>
-                <span class="sensor-value small" id="gps-lat">--</span>
-            </div>
-
-            <div class="sensor-card gps">
-                <span class="sensor-label">GPS LON</span>
-                <span class="sensor-value small" id="gps-lon">--</span>
-            </div>
-
-            <div class="sensor-card gps">
-                <span class="sensor-label">ALTITUDE</span>
-                <span class="sensor-value" id="gps-alt">--</span>
-                <span class="sensor-unit">m</span>
-            </div>
-
-            <div class="sensor-card gps">
-                <span class="sensor-label">SATELLITES</span>
-                <span class="sensor-value" id="gps-sats">--</span>
-            </div>
-
-            <div class="sensor-card gps">
-                <span class="sensor-label">UTC TIME</span>
-                <span class="sensor-value small" id="gps-time">--</span>
-            </div>
-
+                <div class="sensor-card priority">
+                    <span class="sensor-label">UV / LTR-390</span>
+                    <span class="sensor-value" id="uv">--</span>
+                    <span class="sensor-unit">UV Index</span>
+                </div>
+                <div class="sensor-card">
+                    <span class="sensor-label">EXT TEMP / BME280</span>
+                    <span class="sensor-value" id="bme-temp">--</span>
+                    <span class="sensor-unit">°C</span>
+                </div>
+                <div class="sensor-card">
+                    <span class="sensor-label">PRESSURE</span>
+                    <span class="sensor-value" id="bme-pres">--</span>
+                    <span class="sensor-unit">hPa</span>
+                </div>
+                <div class="sensor-card">
+                    <span class="sensor-label">EXT HUMIDITY</span>
+                    <span class="sensor-value" id="bme-hum">--</span>
+                    <span class="sensor-unit">%</span>
+                </div>
+                <div class="sensor-card">
+                    <span class="sensor-label">INT TEMP / DHT11</span>
+                    <span class="sensor-value" id="dht-temp">--</span>
+                    <span class="sensor-unit">°C</span>
+                </div>
+                <div class="sensor-card">
+                    <span class="sensor-label">INT HUMIDITY</span>
+                    <span class="sensor-value" id="dht-hum">--</span>
+                    <span class="sensor-unit">%</span>
+                </div>
+                <div class="sensor-card gps">
+                    <span class="sensor-label">GPS LAT</span>
+                    <span class="sensor-value small" id="gps-lat">--</span>
+                </div>
+                <div class="sensor-card gps">
+                    <span class="sensor-label">GPS LON</span>
+                    <span class="sensor-value small" id="gps-lon">--</span>
+                </div>
+                <div class="sensor-card gps">
+                    <span class="sensor-label">ALTITUDE</span>
+                    <span class="sensor-value" id="gps-alt">--</span>
+                    <span class="sensor-unit">m</span>
+                </div>
+                <div class="sensor-card gps">
+                    <span class="sensor-label">SATELLITES</span>
+                    <span class="sensor-value" id="gps-sats">--</span>
+                </div>
+                <div class="sensor-card gps">
+                    <span class="sensor-label">UTC TIME</span>
+                    <span class="sensor-value small" id="gps-time">--</span>
+                </div>
+                
             </div>
         </div>
 
+        <!-- ── COLUMNA 3: CÁMARA Y STEERING ── -->
         <div class="panel center-panel">
             <div class="camera-feed">
                 <h2>MAIN CAMERA FEED</h2>
@@ -104,7 +169,6 @@
                     <div class="crosshair">+</div>
                 </div>
             </div>
-
             <div class="steering-panel">
                 <h2>ROVER MOTION / STEERING</h2>
                 <div class="steering-grid">
@@ -127,6 +191,7 @@
             </div>
         </div>
 
+        <!-- ── COLUMNA 4: GPS Y XYZ ── -->
         <div class="panel right-panel">
             <h2>GPS NAVIGATION / MAPS</h2>
             <div class="map-container">
@@ -135,7 +200,6 @@
                     LAT: 18.441<br>LON: -145.922
                 </div>
             </div>
-
             <h2 class="mt-2">XYZ AXIS POSITION</h2>
             <div class="xyz-container">
                 <div class="data-text">
@@ -149,16 +213,6 @@
             </div>
         </div>
 
-        <div class="panel bottom-panel">
-            <h2>COMMANDS & TELEMETRY</h2>
-            <div class="button-grid">
-                <button class="btn primary" onclick="window.location.href='exploration.html'">START EXPLORATION</button>
-                <button class="btn" onclick="takePhoto()">TAKE PHOTOGRAPH</button>
-                <button class="btn" onclick="takeData()">TAKE DATA</button>
-                <button class="btn warning" onclick="activateSoil()">SOIL SENSOR ACTIVATION</button>
-                <button class="btn warning" onclick="deployExcavation()">EXCAVATION PAYLOAD</button>
-            </div>
-        </div>
     </div>
     <script src="dashboard.js"></script>
 </body>
